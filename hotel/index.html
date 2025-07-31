@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hotel Éter</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
   <header>
@@ -18,8 +18,8 @@
       <a href="#">Contacto</a>
     </nav>
     <div class="buttons">
-      <a class="login" href="login.html">Iniciar sesión</a>
-      <a class="register">Registrarse</a>
+      <a class="login" href="./login.html">Iniciar sesión</a>
+      <a class="register" href="#">Registrarse</a>
     </div>
   </header>
 
@@ -29,5 +29,49 @@
       <p>Tranquilidad, diseño y atención personalizada</p>
     </div>
   </section>
+
+  <section class="contact-info" aria-label="Información de contacto">
+    <h2>Reservas</h2>
+    <p>Realiza tu reserva de forma rápida y sencilla.</p>
+    <button class="reserve-button" aria-label="Abrir modal de reserva" onclick="reservationDialog.showModal()">Reservar ahora</button>
+  </section>
+
+
+  <dialog 
+    id="reservationDialog"
+    role="dialog" 
+    aria-labelledby="reservationDialogTitle"
+    aria-describedby="reservationDialogDesc">
+    <button class="close-dialog" aria-label="Cerrar modal" onclick="reservationDialog.close()">x</button>
+    <h2 id="reservationDialogTitle">Reserva tu estancia</h2>
+    <p id="reservationDialogDesc">Completa el siguiente formulario para reservar tu hospedaje.</p>
+    <form action="#">
+      <label for="checkin">Fecha de entrada:</label>
+      <input type="date" id="checkin" name="checkin" required>
+      
+      <label for="checkout">Fecha de salida:</label>
+      <input type="date" id="checkout" name="checkout" required>
+      
+      <label for="guests">Número de huéspedes:</label>
+      <input type="number" id="guests" name="guests" min="1" max="10" required>
+      <button type="submit" aria-label="Reservar estancia">Reservar</button>
+    </form>
+  </dialog>
 </body>
+<script>
+const openBtn = document.querySelector('.reserve-button');
+const dialog = document.getElementById('reservationDialog');
+
+openBtn.addEventListener('click', () => {
+  dialog.showModal();
+  document.getElementById('checkin').focus();
+});
+
+const closeBtn = dialog.querySelector('.close-dialog');
+
+closeBtn.addEventListener('click', () => {
+  dialog.close();
+  openBtn.focus();
+});
+</script>
 </html>
