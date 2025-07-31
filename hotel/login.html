@@ -3,34 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="./img/logo.png" alt="Logo Hotel Éter"/>
+            <img src="./img/logo.png" alt="Logo Hotel Éter" />
         </div>
         <nav class="nav">
-            <a href="index.html">Inicio</a>
-            <a href="#">Servicios</a>
-            <a href="#">Reserva</a>
-            <a href="#">Contacto</a>
+        <!-- Usamos role="navigation" para decir que este bloque es el menú principal de navegación. El aria-label ayuda a identificarlo para lectores de pantalla. Y aria-current="page" marca qué página está activa.-->
+
+            <div class="nav" role="navigation" aria-label="Navegación principal">
+                <a href="#" aria-current="page">Inicio</a>
+                <a href="#">Servicios</a>
+                <a href="#">Reserva</a>
+                <a href="#">Contacto</a>    
+            </div>
+
         </nav>
         <div class="buttons">
             <button class="login">Iniciar sesión</button>
             <button class="register">Registrarse</button>
         </div>
     </header>
+    <!-- Se usa role="form" para que los lectores de pantalla sepan que esto es un formulario. aria-label da una descripción accesible ("formulario de inicio de sesión").aria-required="true" dice que los campos son obligatorios para usuarios con lector de pantalla. -->
 
     <div id="contact-info" aria-label="formulario de inicío de sesión">
-        <form action="#" >
+        <form action="#">
             <label for="correo">Correo</label>
-            <input type="text" name="correo" id="correo" autocorrect="off" autocomplete="correo"
-                   autocapitalize="off" placeholder="correo@mail.com"  required>
+            <input type="text" name="correo" id="correo" aria-required="true" autocorrect="off" autocomplete="correo"
+                autocapitalize="off" placeholder="correo@mail.com" required>
 
             <label for="contraseña">Contraseña</label>
-            <input type="contraseña" name="contraseña" id="contraseña" autocomplete="current-password"
-                   autocapitalize="off" autocorrect="off" placeholder="********" required>
+            <input type="password" name="contraseña" id="contraseña" aria-required="true"
+                autocomplete="current-password" autocapitalize="off" autocorrect="off" placeholder="********" required>
 
             <button type="submit">Iniciar sesión</button>
         </form>
