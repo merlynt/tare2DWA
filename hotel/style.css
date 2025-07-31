@@ -102,6 +102,48 @@ header {
   font-size: 30px;
   margin-left: 50px;
 }
+#contact-info {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", sans-serif;
+}
+
+#contact-info form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact-info label {
+  font-weight: 600;
+  color: #333;
+}
+
+#contact-info input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+#contact-info button[type="submit"] {
+  background-color: #0d5db6;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact-info button[type="submit"]:hover {
+  background-color: #094a93;
+}
 
 .contact-info {
   min-width: 500px;
