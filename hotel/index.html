@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hotel Éter</title>
-  <link rel="stylesheet" href="./style.css"/>
+  <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
   <header>
     <div class="logo">
-      <img src="./img/logo.png" alt="Logo Hotel Éter"/>
+      <img src="./img/logo.png" alt="Logo Hotel Éter" />
     </div>
-    <nav class="nav">
-      <a href="index.html">Inicio</a>
+    <!-- Usamos role="navigation" para decir que este bloque es el menú principal de navegación. El aria-label ayuda a identificarlo para lectores de pantalla. Y aria-current="page" marca qué página está activa.-->
+    <div class="nav" role="navigation" aria-label="Navegación principal">
+      <a href="#" aria-current="page">Inicio</a>
       <a href="#">Servicios</a>
       <a href="#">Reserva</a>
       <a href="#">Contacto</a>
-    </nav>
+    </div>
     <div class="buttons">
       <a class="login" href="./login.html">Iniciar sesión</a>
       <a class="register" href="#">Registrarse</a>
@@ -33,14 +36,12 @@
   <section class="contact-info" aria-label="Información de contacto">
     <h2>Reservas</h2>
     <p>Realiza tu reserva de forma rápida y sencilla.</p>
-    <button class="reserve-button" aria-label="Abrir modal de reserva" onclick="reservationDialog.showModal()">Reservar ahora</button>
+    <button class="reserve-button" aria-label="Abrir modal de reserva" onclick="reservationDialog.showModal()">Reservar
+      ahora</button>
   </section>
+  <!-- se usa role="dialog" para que lectores de pantalla lo reconozcan como un modal.aria-labelledby y aria-describedby conectan el título y la descripción accesible.El botón de cerrar tiene aria-label para que sea claro qué hace.El formulario tiene campos obligatorios para que el usuario complete la reserva.-->
 
-
-  <dialog 
-    id="reservationDialog"
-    role="dialog" 
-    aria-labelledby="reservationDialogTitle"
+  <dialog id="reservationDialog" role="dialog" aria-labelledby="reservationDialogTitle"
     aria-describedby="reservationDialogDesc">
     <button class="close-dialog" aria-label="Cerrar modal" onclick="reservationDialog.close()">x</button>
     <h2 id="reservationDialogTitle">Reserva tu estancia</h2>
@@ -48,10 +49,10 @@
     <form action="#">
       <label for="checkin">Fecha de entrada:</label>
       <input type="date" id="checkin" name="checkin" required>
-      
+
       <label for="checkout">Fecha de salida:</label>
       <input type="date" id="checkout" name="checkout" required>
-      
+
       <label for="guests">Número de huéspedes:</label>
       <input type="number" id="guests" name="guests" min="1" max="10" required>
       <button type="submit" aria-label="Reservar estancia">Reservar</button>
@@ -59,19 +60,20 @@
   </dialog>
 </body>
 <script>
-const openBtn = document.querySelector('.reserve-button');
-const dialog = document.getElementById('reservationDialog');
+  const openBtn = document.querySelector('.reserve-button');
+  const dialog = document.getElementById('reservationDialog');
 
-openBtn.addEventListener('click', () => {
-  dialog.showModal();
-  document.getElementById('checkin').focus();
-});
+  openBtn.addEventListener('click', () => {
+    dialog.showModal();
+    document.getElementById('checkin').focus();
+  });
 
-const closeBtn = dialog.querySelector('.close-dialog');
+  const closeBtn = dialog.querySelector('.close-dialog');
 
-closeBtn.addEventListener('click', () => {
-  dialog.close();
-  openBtn.focus();
-});
+  closeBtn.addEventListener('click', () => {
+    dialog.close();
+    openBtn.focus();
+  });
 </script>
+
 </html>
